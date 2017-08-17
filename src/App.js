@@ -26,7 +26,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      activeFilters: [],
+      filters: [],
       data: data,
       columns: TABLE_COLUMNS
     };
@@ -36,14 +36,13 @@ class App extends Component {
     this.sortData = this.sortData.bind(this);
   }
 
-  changeActiveFilters(e) {
-    const updatedActiveFilter = [...this.state.activeFilters];
-    const index = updatedActiveFilter.indexOf(e.target.value);
-    index === -1 ? updatedActiveFilter.push(e.target.value) : updatedActiveFilter.splice(index, 1);
+  changeActiveFilters(value) {
+    const filters = [...this.state.filters];
+    const index = filters.indexOf(value);
+    index === -1 ? filters.push(value) : filters.splice(index, 1);
     this.setState({
-      activeFilters: updatedActiveFilter
+      filters
     });
-    console.log(this.state.activeFilters)
   }
 
   sortData(label) {
@@ -87,13 +86,13 @@ class App extends Component {
   }
 
   render() {
-    const {columns, data, activeFilters} = this.state;
+    const {columns, data, filters} = this.state;
     return (
       <div className="App">
         <Filters changeActiveFilters={this.changeActiveFilters}/>
         <SortableTable
           columns={columns}
-          data={this.getDisplayedData(data, activeFilters)}
+          data={this.getDisplayedData(data, filters)}
           sortData={this.sortData}
         />
       </div>
