@@ -26,15 +26,29 @@ class App extends Component {
       activeFilters: [],
       data: data,
       columns: TABLE_COLUMNS
-    }
+    };
+    this.changeActiveFilters = this.changeActiveFilters.bind(this);
+  }
 
+  changeActiveFilters(e) {
+    const updatedActiveFilter = this.state.activeFilters;
+    const index = updatedActiveFilter.indexOf(e.target.value);
+    if (index === -1) {
+      updatedActiveFilter.push(e.target.value);
+    } else {
+      updatedActiveFilter.splice(index, 1);
+    }
+    this.setState({
+      activeFilters: updatedActiveFilter
+    });
+    console.log(this.state.activeFilters);
   }
 
   render() {
-    const {filters, columns, data} = this.state;
+    const {columns, data} = this.state;
     return (
       <div className="App">
-          <Filters filters={filters} />
+          <Filters changeActiveFilters={this.changeActiveFilters} />
           <SortableTable columns={columns} data={data} />
       </div>
     );

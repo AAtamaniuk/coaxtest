@@ -5,8 +5,8 @@ const SortableBody = ({data}) => {
   return (
     <tbody>
     {
-      data.map((element, index) =>
-        <tr key={index}>
+      data.map((element) =>
+        <tr key={element.id}>
           <td>{element.name}</td>
           <td>{element.rating}</td>
           <td>{element.price}</td>

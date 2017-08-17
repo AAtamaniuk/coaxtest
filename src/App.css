@@ -1,6 +1,9 @@
 .App {
   text-align: center;
   font-family: 'Roboto', sans-serif;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .Filters {
