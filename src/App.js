@@ -28,6 +28,7 @@ class App extends Component {
       columns: TABLE_COLUMNS
     };
     this.changeActiveFilters = this.changeActiveFilters.bind(this);
+    this.getDisplayedData = this.getDisplayedData.bind(this);
   }
 
   changeActiveFilters(e) {
@@ -42,6 +43,13 @@ class App extends Component {
       activeFilters: updatedActiveFilter
     });
     console.log(this.state.activeFilters);
+  }
+
+  getDisplayedData() {
+    const x = this.state.data.filter(element => {
+      return this.state.activeFilters.indexOf(element.type) !== -1;
+    });
+    console.log(x);
   }
 
   render() {
