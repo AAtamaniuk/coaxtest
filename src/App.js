@@ -55,11 +55,11 @@ class App extends Component {
       sortBy = label;
       sortMethod = 'asc';
     } else {
-      sortMethod === 'asc' ? sortMethod = 'desc': sortMethod = 'asc'
+      sortMethod = sortMethod === 'asc' ?  'desc' : 'asc';
     }
 
     const data = _.orderBy(_.cloneDeep(this.state.data), sortBy, sortMethod);
-    
+
     this.setState({
       sortBy,
       sortMethod,
