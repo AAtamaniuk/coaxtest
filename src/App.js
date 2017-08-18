@@ -16,7 +16,6 @@ class App extends Component {
       sortBy: '',
       sortMethod: 'asc'
     };
-
     this.changeFilters = this.changeFilters.bind(this);
     this.getDisplayedData = this.getDisplayedData.bind(this);
     this.sortData = this.sortData.bind(this);
@@ -29,6 +28,7 @@ class App extends Component {
 
   normalizeData() {
     const data = _.cloneDeep(this.state.data);
+    // Normalize price ('$400' => 400)
     const newData = _.map(data).map(function(x) {
       return _.assign(x, {
         price: parseInt(x.price.slice(1), 10)
@@ -50,16 +50,13 @@ class App extends Component {
 
   sortData(label) {
     let {sortBy, sortMethod} = this.state;
-
     if (label !== sortBy)  {
       sortBy = label;
       sortMethod = 'asc';
     } else {
       sortMethod = sortMethod === 'asc' ?  'desc' : 'asc';
     }
-
     const data = _.orderBy(_.cloneDeep(this.state.data), sortBy, sortMethod);
-
     this.setState({
       sortBy,
       sortMethod,
@@ -69,7 +66,7 @@ class App extends Component {
 
   getDisplayedData(data, filters) {
     return data.filter(element => {
-      return filters.indexOf(element.type) !== -1;
+      return filters.includes(element.type);
     });
   }
 
@@ -77,7 +74,7 @@ class App extends Component {
     const {data, filters} = this.state;
     return (
       <div className="App">
-        <Filters changeActiveFilters={this.changeFilters}/>
+        <Filters changeFilters={this.changeFilters} filters={filters}/>
         <SortableTable
           data={this.getDisplayedData(data, filters)}
           sortData={this.sortData}

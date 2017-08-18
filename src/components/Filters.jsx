@@ -17,7 +17,7 @@ const FILTERS = [
   }
 ];
 
-const Filters = ({changeActiveFilters}) => {
+const Filters = ({changeFilters, filters}) => {
   return (
     <fieldset className="Filters">
       <legend>Choose category</legend>
@@ -27,7 +27,8 @@ const Filters = ({changeActiveFilters}) => {
             type="checkbox"
             id={element.label}
             value={element.label}
-            onChange={(e) => changeActiveFilters(e.target.value)}/>
+            checked={filters.includes(element.label)}
+            onChange={(e) => changeFilters(e.target.value)}/>
           <label htmlFor="coding">{element.name}</label>
         </div>
       )}
@@ -36,7 +37,8 @@ const Filters = ({changeActiveFilters}) => {
 };
 
 Filters.propTypes = {
-  changeActiveFilters: PropTypes.func.isRequired
+  changeFilters: PropTypes.func.isRequired,
+  filters: PropTypes.array.isRequired
 };
 
 export default Filters;
