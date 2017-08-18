@@ -1,14 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SortableHeader = ({columns, sortData}) => {
-  return(
+const TABLE_COLUMNS = [
+  {
+    id: 1,
+    name: 'Product Name',
+    label: 'name'
+  }, {
+    id: 2,
+    name: 'Rating',
+    label: 'rating'
+  }, {
+    id: 3,
+    name: 'Price',
+    label: 'price'
+  }
+];
+
+const SortableHeader = ({sortData}) => {
+  return (
     <thead className="SortableHeader">
-    <tr className="SortableHeader__row">
-      {columns.map((element, index) =>
+    <tr>
+      {TABLE_COLUMNS.map((element) =>
         <th
-          className="SortableHeader__cell"
-          key={index}
+          key={element.id}
           role="button"
           data-label={element.label}
           onClick={(e) => sortData(e.target.getAttribute('data-label'))}
@@ -21,7 +36,8 @@ const SortableHeader = ({columns, sortData}) => {
   )
 };
 
-SortableHeader.propTypes = {};
-SortableHeader.defaultProps = {};
+SortableHeader.propTypes = {
+  sortData: PropTypes.func.isRequired
+};
 
 export default SortableHeader;

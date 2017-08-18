@@ -4,16 +4,18 @@ import PropTypes from 'prop-types';
 import SortableHeader from './SortableHeader';
 import SortableBody from './SortableBody';
 
-const SortableTable = ({columns, data, sortData}) => {
+const SortableTable = ({data, sortData}) => {
   return (
     <table className="SortableTable">
-      <SortableHeader columns={columns} sortData={sortData}/>
+      <SortableHeader sortData={sortData}/>
       <SortableBody data={data} />
     </table>
   );
 };
 
-SortableTable.propTypes = {};
-SortableTable.defaultProps = {};
+SortableTable.propTypes = {
+  sortData: PropTypes.func.isRequired,
+  data: PropTypes.arrayOf(PropTypes.object)
+};
 
 export default SortableTable;

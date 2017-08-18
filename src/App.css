@@ -4,8 +4,52 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+  color: #757575;
 }
 
 .Filters {
   text-align: left;
+  margin-right: 40px;
+  border: 0;
+}
+
+.SortableTable {
+  border-collapse: collapse;
+  width: 700px;
+  max-width: 100%;
+}
+
+legend {
+  font-weight: bold;
+}
+
+th {
+  border: 2px solid #757575;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #083d52;
+  color: white;
+}
+
+th:hover {
+  background: red;
+}
+
+th:first-child {
+  text-align: left;
+}
+
+td {
+  border: 2px solid #757575;
+  padding: 5px 10px;
+}
+
+td:first-child {
+  text-align: left;
+}
+
+.Star {
+  display: inline-block;
 }
