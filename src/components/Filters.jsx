@@ -31,31 +31,6 @@ const Filters = ({changeActiveFilters}) => {
           <label htmlFor="coding">{element.name}</label>
         </div>
       )}
-      {/*<div>
-        <input
-          key={element.id}
-          type="checkbox"
-          id={element.label}
-          value={element.label}
-          onChange={(e) => changeActiveFilters(e.target.value)}/>
-        <label htmlFor="coding">Notebooks</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          id="tablets"
-          value="tablet"
-          onChange={(e) => changeActiveFilters(e.target.value)}/>
-        <label htmlFor="music">Tablets</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          id="phones"
-          value="phone"
-          onChange={(e) => changeActiveFilters(e.target.value)}/>
-        <label htmlFor="music">Mobile phones</label>
-      </div>*/}
     </fieldset>
   );
 };
