@@ -14,7 +14,7 @@ class App extends Component {
       filters: [],
       data: data,
       sortBy: '',
-      sortMethod: ''
+      sortMethod: 'asc'
     };
 
     this.changeFilters = this.changeFilters.bind(this);
@@ -55,20 +55,11 @@ class App extends Component {
       sortBy = label;
       sortMethod = 'asc';
     } else {
-      switch (sortMethod) {
-        case 'asc':
-          sortMethod = 'desc';
-          break;
-        case 'desc':
-          sortMethod = 'asc';
-          break;
-        default:
-          sortMethod = 'asc';
-      }
+      sortMethod === 'asc' ? sortMethod = 'desc': sortMethod = 'asc'
     }
 
     const data = _.orderBy(_.cloneDeep(this.state.data), sortBy, sortMethod);
-
+    
     this.setState({
       sortBy,
       sortMethod,
